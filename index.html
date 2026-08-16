@@ -1,89 +1,173 @@
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 30px;
-    line-height: 1.7;
-    color: #263238;
-    background: #f7f9fb;
-  }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant IA de recherche d'emploi</title>
 
-  h1 {
-    font-size: 42px;
-    margin-bottom: 12px;
-    color: #172b4d;
-  }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 30px;
+      line-height: 1.7;
+      color: #263238;
+      background: #f7f9fb;
+    }
 
-  h2 {
-    margin-top: 45px;
-    color: #172b4d;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 8px;
-  }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+      color: #172b4d;
+    }
 
-  p {
-    font-size: 17px;
-  }
+    h2 {
+      margin-top: 45px;
+      color: #172b4d;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
 
-  ul {
-    background: white;
-    padding: 25px 25px 25px 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-  }
+    p {
+      font-size: 17px;
+    }
 
-  li {
-    margin: 8px 0;
-  }
-</style>
+    ul {
+      background: white;
+      padding: 25px 25px 25px 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
 
-<h1>Assistant IA de recherche d'emploi</h1>
+    li {
+      margin: 8px 0;
+    }
 
-<p>
-  Prototype d'agent IA conçu pour rechercher et analyser des offres d'emploi 
-  à partir d'une demande formulée en langage naturel.
-</p>
+    .search-demo {
+      background: white;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      display: grid;
+      gap: 18px;
+    }
 
-<h2>Le projet</h2>
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-<p>
-  L'objectif : explorer concrètement le fonctionnement d'un agent IA et sa capacité
-  à interagir avec des services externes.
-</p>
+    .field label {
+      font-weight: bold;
+    }
 
-<p>
-  L'assistant interprète la demande de l'utilisateur, interroge l'API France Travail
-  et restitue une sélection d'offres correspondant aux critères recherchés.
-</p>
+    .field input {
+      padding: 12px;
+      border: 1px solid #d8dee8;
+      border-radius: 8px;
+      font-size: 16px;
+      background: #f8fafc;
+    }
 
-<h2>Fonctionnalités</h2>
+    .search-demo button {
+      padding: 13px 20px;
+      border: 0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: default;
+    }
 
-<ul>
-  <li>Recherche d'offres par métier ou mots-clés</li>
-  <li>Prise en compte du type de contrat</li>
-  <li>Interrogation en temps réel de l'API France Travail</li>
-  <li>Limitation et synthèse des résultats</li>
-  <li>Utilisation d'outils complémentaires par l'agent</li>
-</ul>
+    .demo-note {
+      font-size: 14px;
+      font-style: italic;
+    }
+  </style>
+</head>
 
-<h2>Technologies utilisées</h2>
+<body>
 
-<ul>
-  <li>n8n — orchestration du workflow et des outils</li>
-  <li>Ollama — exécution locale du modèle de langage</li>
-  <li>API France Travail — accès aux offres d'emploi</li>
-  <li>GitHub Pages — présentation du prototype</li>
-</ul>
+  <h1>Assistant IA de recherche d'emploi</h1>
 
-<h2>Une démarche expérimentale</h2>
+  <p>
+    Prototype d'agent IA conçu pour rechercher et analyser des offres d'emploi
+    à partir d'une demande formulée en langage naturel.
+  </p>
 
-<p>
-  Ce projet a été réalisé dans une démarche d'apprentissage et d'expérimentation
-  autour des agents IA, de l'automatisation et de l'utilisation d'API.
-</p>
+  <h2>Le projet</h2>
 
-<p>
-  Le prototype évolue progressivement : enrichissement des critères de recherche,
-  fiabilisation des réponses et amélioration de l'interface utilisateur.
-</p>
+  <p>
+    L'objectif : explorer concrètement le fonctionnement d'un agent IA et sa capacité
+    à interagir avec des services externes.
+  </p>
+
+  <p>
+    L'assistant interprète la demande de l'utilisateur, interroge l'API France Travail
+    et restitue une sélection d'offres correspondant aux critères recherchés.
+  </p>
+
+  <h2>Fonctionnalités</h2>
+
+  <ul>
+    <li>Recherche d'offres par métier ou mots-clés</li>
+    <li>Prise en compte du type de contrat</li>
+    <li>Interrogation en temps réel de l'API France Travail</li>
+    <li>Limitation et synthèse des résultats</li>
+    <li>Utilisation d'outils complémentaires par l'agent</li>
+  </ul>
+
+  <h2>Prototype de recherche</h2>
+
+  <p>
+    Exemple d'interface envisagée pour permettre à l'utilisateur
+    de formuler simplement ses critères de recherche.
+  </p>
+
+  <div class="search-demo">
+    <div class="field">
+      <label>Poste</label>
+      <input type="text" value="Data Analyst" readonly>
+    </div>
+
+    <div class="field">
+      <label>Ville</label>
+      <input type="text" value="Toulouse" readonly>
+    </div>
+
+    <div class="field">
+      <label>Contrat</label>
+      <input type="text" value="CDI" readonly>
+    </div>
+
+    <button type="button">Rechercher</button>
+  </div>
+
+  <p class="demo-note">
+    Démonstration visuelle — le prototype fonctionne actuellement dans un environnement local.
+  </p>
+
+  <h2>Technologies utilisées</h2>
+
+  <ul>
+    <li>n8n — orchestration du workflow et des outils</li>
+    <li>Ollama — exécution locale du modèle de langage</li>
+    <li>API France Travail — accès aux offres d'emploi</li>
+    <li>GitHub Pages — présentation du prototype</li>
+  </ul>
+
+  <h2>Une démarche expérimentale</h2>
+
+  <p>
+    Ce projet a été réalisé dans une démarche d'apprentissage et d'expérimentation
+    autour des agents IA, de l'automatisation et de l'utilisation d'API.
+  </p>
+
+  <p>
+    Le prototype évolue progressivement : enrichissement des critères de recherche,
+    fiabilisation des réponses et amélioration de l'interface utilisateur.
+  </p>
+
+</body>
+</html>
